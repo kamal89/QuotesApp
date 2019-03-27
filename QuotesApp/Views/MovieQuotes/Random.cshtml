@@ -1,0 +1,38 @@
+﻿@model IEnumerable<QuotesApp.Models.MovieQuote>
+
+@{
+    ViewData["Title"] = "Random";
+}
+
+<h1>Random List Of Quotes</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Quote)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Movie)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quote)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Movie.Title)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.MovieQuoteId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.MovieQuoteId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.MovieQuoteId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

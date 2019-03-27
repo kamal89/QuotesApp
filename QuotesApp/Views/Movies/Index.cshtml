@@ -1,0 +1,55 @@
+﻿@model QuotesApp.Models.ReleaseYear
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Browse Movies</h1>
+
+<p>
+    <a asp-action="Create">Add a movie to the database</a>
+</p>
+<form asp-controller="Movies" asp-action="Index" method="get">
+    <p>
+        Filter By
+    </p>
+    <p>
+        Title: <input type="text" name="SearchString">
+         Year:
+        <select asp-for="SearchYear" asp-items="Model.Years">
+            <option value="">All</option>
+        </select>
+    <input type="submit" value="Filter" />
+    </p>
+
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Movies[0].Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Movies[0].ReleaseYear)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Movies) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReleaseYear)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.MovieId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.MovieId">View Quotes</a> |
+                <a asp-action="Delete" asp-route-id="@item.MovieId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

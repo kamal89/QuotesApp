@@ -1,0 +1,43 @@
+﻿@model QuotesApp.Models.Movie
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Movie Details</h1>
+
+<div>
+    <dl class="row">
+        <dd>
+            <table class="table">
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.Title)</th>
+                    <th> @Html.DisplayNameFor(model => model.ReleaseYear)</th>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(model => model.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.ReleaseYear)
+                    </td>
+                </tr>
+                <tr>
+                    <th>Quotes</th>
+                </tr>
+                @foreach (var quote in Model.MovieQuotes)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => quote.Quote)
+                        </td>
+                    </tr>
+                }
+            </table>
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.MovieId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

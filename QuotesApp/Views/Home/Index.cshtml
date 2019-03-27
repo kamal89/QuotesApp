@@ -1,0 +1,22 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Movie Quotes App</h1>
+    <p>
+        This is a simple web application in ASP.NET Core that will allow the user to create movies, create quotes for a given movie,
+        find movies by name or year, get a list of quotes for a movie, and get a random list of quotes.
+        This app was developed by Kamal Chaker for Sayari Analytics.
+    </p>
+</div>
+<div class="row" style="padding-top: 40px;">
+    <div class="col-md-6">
+        <h2>Browse By Movies</h2>
+        <a class="btn btn-primary" asp-controller="Movies" asp-action="Index">Movies</a>
+    </div>
+    <div class="col-md-6">
+        <h2>Browse By Quotes</h2>
+        <a class="btn btn-primary" asp-controller="MovieQuotes" asp-action="Index">Quotes</a>
+    </div>
+</div>
